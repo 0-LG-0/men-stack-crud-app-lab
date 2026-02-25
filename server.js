@@ -4,7 +4,7 @@ const app = express()
 const Planet = require('./models/planet.js')
 
 // Middlewares
-
+require('./db/connections.js')
 // Routes
 app.get('/test', (req, res) => {
     res.render('./test/test.ejs')
