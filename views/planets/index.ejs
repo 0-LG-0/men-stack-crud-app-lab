@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 style="color: <%= planet.color %>"><%= planet.name %></h1>
+        <% if(planet.image) { %>
+            <img src="<%= planet.image %>">
+        <% } %>
+        <% if(planet.isHabitable) { %>
+        <h2><%= planet.name %> can be visited by humans</h2>
+        <% } else { %>
+        <h2><%= planet.name %> cannot be visited by humans</h2>
+
+        <% } %>
+</body>
+</html>

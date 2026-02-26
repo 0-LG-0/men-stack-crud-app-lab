@@ -15,6 +15,47 @@ app.get('/test', (req, res) => {
 // Update: Allow users to modify existing data entries.
 // Delete: Give users the ability to remove entries.
 
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+})
+
+app.get('/planets', async (req, res) => {
+    try {
+        const planets = await Planet.find()
+        res.render('planets/find.ejs', { planets })
+    } catch (error) {
+        res.json({ err: error.message })
+    }
+})
+
+app.get('/planets/new', (req, res) => {
+    res.render('planets/new.ejs')
+})
+
+app.post('/planets', async (req, res) => {
+    try {
+        req.body.isHabitable = req.body.isHabitable === 'on' ? true : false
+        await Planet.create(req.body) 
+        res.redirect('/planets')
+    } catch (error) {
+        res.json({ err: error.name, err: error.message, err: error.stack })
+    }
+})
+
+app.get('/planets/:id', async (req, res) => {
+    try {
+    const planet = await Planet.findById(req.params.id)
+    if (!planet) {
+        throw new Error(`Failed to find ${req.params.id}`)
+    }
+    res.render('planets/index.ejs', { 
+        planet,
+    })
+    } catch (error) {
+        res.json({ err: error.message })
+    }
+})
+
 app.listen(3000, () => {
     console.log('Running on 3000...')
 })

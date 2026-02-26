@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form {
+        width: 90%;
+        margin: 5px auto;
+    }
+</style>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>New Planet</h1>
+
+    <form action="/planets" method="POST">
+
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" />
+
+    <label for="isHabitable">Habitable</label>
+    <input type="checkbox" name="isHabitable" id="isHabitable" />
+
+    <label for="color">Color:</label>
+    <input type="text" name="color" id="color" />
+
+    <label for="image">Image Source:</label>
+    <input type="text" name="image" id="image" /><br>
+
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" rows="10" columns="100"></textarea>
+
+    <button type="submit">CREATE</button>
+    </form>
+
+</body>
+</html>
