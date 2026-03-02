@@ -6,9 +6,23 @@
     <title>Document</title>
 </head>
 <style>
+    body {
+        text-align: center;
+        }
     form {
-        width: 90%;
-        margin: 5px auto;
+        width: 80%;
+        margin: 10px auto;
+    }
+    textarea {
+        width: 400px;
+        margin-top: 40px;
+    }
+    button {
+        font-size: 15px;
+        margin-top: 10px;
+        width: 150px;
+        letter-spacing: 3px;
+        padding: 3px;
     }
 </style>
 <body>
@@ -26,13 +40,13 @@
 
     <label for="color">Color:</label>
     <input type="text" name="color" id="color" />
-
+        <br>
     <label for="image">Image Source:</label>
     <input type="text" name="image" id="image" /><br>
 
     <label for="description">Description:</label>
     <textarea name="description" id="description" rows="10" columns="100"></textarea>
-
+        <br>
     <button type="submit">CREATE</button>
     </form>
 

@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 
 const planetSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  description: { type: String, required: true },
-  image: String,
+  isHabitable: Boolean , 
   color: { type: String, required: true },
-  isHabitable: Boolean,
+  image: { type: String },
+  description: { type: String},
 })
 
-const Planet = mongoose.model('Planet', planetSchema)
+const Planet = mongoose.model("Planet", planetSchema)
 module.exports = Planet

@@ -10,9 +10,10 @@
     <h1>Planets</h1>
     <ul>
     <% planets.forEach(planet => { %>
-        <a href="/planets/<%= planet._id %>">
-        <li style="color: <%= planet.color %>"><%= planet.name %></li>
+        <a style="color: <%= planet.color %>" href="/planets/<%= planet._id %>">
+        <li><%= planet.name %></li>
         </a>
+        <p style="margin-top: 0px; margin-bottom: 5px"><%= planet.description %></p>
     <% }) %>
     </ul>
 </body>

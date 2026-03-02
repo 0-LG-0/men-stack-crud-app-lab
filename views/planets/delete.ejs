@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+    #buttons {
+        display: inline-flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    button {
+        font-size: 20px;
+    }
+</style>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Confirm Delete</h1>
+    <h3>Choose cancel to return and delete to confirm</h3>
+    <div id="buttons">
+    <button onclick="window.location.href='/planets/<%= planet._id %>'">CANCEL</button>
+    <form action="/planets/<%= planet._id %>/?_method=DELETE" method="POST">
+        <button id="del" type="submit">DELETE <%- planet.name %></button>
+    </form>
+    </div>
+</body>
+</html>

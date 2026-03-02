@@ -5,17 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        text-align: center;
+        background-image: url('https://images.unsplash.com/photo-1580432551600-8c9768628a9e?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+        background-size: cover; 
+        background-repeat: no-repeat;
+        color: #B7410E;
+    }
+    h2 {
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 5px;
+        margin: 10px auto;
+        width: fit-content;
+    }
+    p {
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 5px;
+        margin: 10px auto;
+        width: fit-content;
+    }
+        #buttons {
+        margin-top: 25px;
+    }
+    button {
+        font-size: 15px;
+    }
+</style>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1 style="color: <%= planet.color %>"><%= planet.name %></h1>
-        <% if(planet.image) { %>
-            <img src="<%= planet.image %>">
+        <% if (planet.image) { %>
+            <img style="height: 400px" src="<%= planet.image %>">
         <% } %>
-        <% if(planet.isHabitable) { %>
-        <h2><%= planet.name %> can be visited by humans</h2>
+        <% if (planet.isHabitable) { %>
+        <h2 style="color: <%= planet.color %>"><%= planet.name %> can be visited by humans</h2>
         <% } else { %>
         <h2><%= planet.name %> cannot be visited by humans</h2>
-
         <% } %>
+        <% if (planet.description) { %>
+            <p style="color: <%= planet.color %>"><%= planet.description %></p>
+        <% } %>
+        <div id="buttons">
+        <button onclick="window.location.href='/planets %>'">BACK</button>
+        <button onclick="window.location.href='./<%= planet._id %>/edit'">EDIT</button>
+        <button onclick="window.location.href='./<%= planet._id %>/delete'">DELETE</button>
+        </div>
 </body>
 </html>
