@@ -43,7 +43,7 @@ app.post('/planets', async (req, res) => {
         await Planet.create(req.body) 
         res.redirect('/planets')
     } catch (error) {
-        res.json({ err: error.name, err: error.message, err: error.stack })
+        res.json({ err: error.message })
     }
 })
 
@@ -53,7 +53,7 @@ app.get('/planets/:id', async (req, res) => {
     if (!planet) {
         throw new Error(`Failed to find ${req.params.id}`)
     }
-    res.render('planets/index.ejs', { 
+    res.render('planets/show.ejs', { 
         planet,
     })
     } catch (error) {
@@ -75,11 +75,11 @@ app.get('/planets/:id/edit', async (req, res) => {
 
 app.put('/planets/:id', async (req, res) => {
     try {
-        req.body.isHabitable = req.body.isHabitable === 'on'
+        req.body.isHabitable = req.body.isHabitable === 'on' ? true : false
         await Planet.findByIdAndUpdate(req.params.id, req.body)
         res.redirect(`/planets/${req.params.id}`)
     } catch (error) {
-        res.json({ err: error.message, err: error.stack })
+        res.json({ err: error.message })
     }
 })
 
